@@ -12,7 +12,7 @@ const addBlog = async (req, res) => {
         if (!description) return res.status(400).json({ error: "Description is required" });
 
         // Upload image to Cloudinary
-        const result = await cloudinary.uploader.upload(req.file.path, { folder: "achariya-blogs" });
+        const result = await cloudinary.uploader.upload(req.file.path, { folder: "mspl-blogs" });
         fs.unlinkSync(req.file.path);
 
         const blog = new Blog({
@@ -42,9 +42,9 @@ const updateBlog = async (req, res) => {
         // Update image if a new file is uploaded
         if (req.file) {
             const publicId = blog.image.split("/").pop().split(".")[0];
-            await cloudinary.uploader.destroy(`achariya-blogs/${publicId}`);
+            await cloudinary.uploader.destroy(`achariya-mspl/${publicId}`);
 
-            const result = await cloudinary.uploader.upload(req.file.path, { folder: "achariya-blogs" });
+            const result = await cloudinary.uploader.upload(req.file.path, { folder: "mspl-blogs" });
             fs.unlinkSync(req.file.path);
 
             blog.image = result.secure_url;
@@ -95,7 +95,7 @@ const deleteBlog = async (req, res) => {
 
         // Delete image from Cloudinary
         const publicId = blog.image.split("/").pop().split(".")[0];
-        await cloudinary.uploader.destroy(`achariya-blogs/${publicId}`);
+        await cloudinary.uploader.destroy(`achariya-mspl/${publicId}`);
 
         await Blog.findByIdAndDelete(id);
         res.status(200).json({ message: "Blog deleted successfully" });

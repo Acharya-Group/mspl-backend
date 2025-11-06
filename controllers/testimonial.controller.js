@@ -11,7 +11,7 @@ const addTestimonial = async (req, res) => {
         if (!description) return res.status(400).json({ error: "Description is required" });
 
         // Upload image to Cloudinary
-        const result = await cloudinary.uploader.upload(req.file.path, { folder: "achariya-testimonial" });
+        const result = await cloudinary.uploader.upload(req.file.path, { folder: "mspl-testimonial" });
         fs.unlinkSync(req.file.path);
 
         const testimonial = new Testimonial({
@@ -43,7 +43,7 @@ const updateTestimonial = async (req, res) => {
             const publicId = testimonial.Image.split('/').pop().split('.')[0];
             await cloudinary.uploader.destroy(`achariya-testimonial/${publicId}`);
 
-            const result = await cloudinary.uploader.upload(req.file.path, { folder: "achariya-testimonial" });
+            const result = await cloudinary.uploader.upload(req.file.path, { folder: "mspl-testimonial" });
             fs.unlinkSync(req.file.path);
 
             testimonial.Image = result.secure_url;

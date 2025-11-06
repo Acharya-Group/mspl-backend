@@ -11,10 +11,7 @@ const PORT = process.env.PORT || 4000;
 
 // ✅ CORS: allow frontend domains and localhost
 const allowedOrigins = [
-  "https://acharya-group.vercel.app",
-  "https://achariyagroup.in",
   "http://localhost:3000",
-  "https://acharya-group-six.vercel.app"
 ];
 
 app.use(

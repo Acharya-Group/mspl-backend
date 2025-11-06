@@ -10,7 +10,7 @@ const addSlider = async (req, res) => {
         if (!link) return res.status(400).json({ error: "Link is required" });
 
         // Upload image to Cloudinary
-        const result = await cloudinary.uploader.upload(req.file.path, { folder: "achariya-slider" });
+        const result = await cloudinary.uploader.upload(req.file.path, { folder: "mspl-slider" });
         fs.unlinkSync(req.file.path);
 
         const slider = new Slider({
@@ -41,7 +41,7 @@ const updateSlider = async (req, res) => {
             const publicId = slider.image.split('/').pop().split('.')[0];
             await cloudinary.uploader.destroy(`achariya-slider/${publicId}`);
 
-            const result = await cloudinary.uploader.upload(req.file.path, { folder: "achariya-slider" });
+            const result = await cloudinary.uploader.upload(req.file.path, { folder: "mspl-slider" });
             fs.unlinkSync(req.file.path);
 
             slider.image = result.secure_url;
