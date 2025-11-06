@@ -9,6 +9,7 @@ import BlogRoute from './Blog.routes.js';
 import ContactRoute from './Contact.routes.js';
 import FaqRoutes from './Faq.routes.js';
 import NoticeRoutes from './Notice.routes.js';
+import ExamCalenderRoutes from './ExamCalender.routes.js';
 const routes = express.Router();
 
 routes.use("/Admin",adminRoutes)
@@ -21,5 +22,6 @@ routes.use("/Testimonial",TestimonialRoute)
 routes.use("/blogs",BlogRoute)
 routes.use("/Faq",FaqRoutes)
 routes.use("/Notice",NoticeRoutes)
+routes.use("/ExamCalender",ExamCalenderRoutes)
 
 export default routes;
