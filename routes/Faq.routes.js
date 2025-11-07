@@ -1,5 +1,5 @@
 import express from 'express';
-import { addFaq, deleteFaq, getFaqs, updateFaq } from '../controllers/faq.Controller.js';
+import { addFaq, deleteFaq, getFaqs, updateFaq } from '../controllers/faq.controller.js';
 
 const FaqRoutes = express.Router();
 // Routes
