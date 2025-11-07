@@ -12,6 +12,8 @@ const PORT = process.env.PORT || 4000;
 // ✅ CORS: allow frontend domains and localhost
 const allowedOrigins = [
   "http://localhost:3000",
+  "https://msplyoga.com",
+  "https://mspl-two.vercel.app"
 ];
 
 app.use(
