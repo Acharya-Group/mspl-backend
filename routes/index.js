@@ -23,6 +23,7 @@ routes.use("/Testimonial",TestimonialRoute)
 routes.use("/blogs",BlogRoute)
 routes.use("/Faq",FaqRoutes)
 routes.use("/Notice",NoticeRoutes)
+routes.use("/Event",NoticeRoutes)
 routes.use("/ExamCalender",ExamCalenderRoutes)
 routes.use("/gallery",GalleryRoutes,)
 

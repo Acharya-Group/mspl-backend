@@ -1,7 +1,7 @@
 import Notice from "../models/Notice.js";
 
 // 📌 Add Notice
-export const addNotice = async (req, res) => {
+ const addNotice = async (req, res) => {
   try {
     const { title, link } = req.body;
 
@@ -27,7 +27,7 @@ export const addNotice = async (req, res) => {
 };
 
 // 📌 Update Notice
-export const updateNotice = async (req, res) => {
+ const updateNotice = async (req, res) => {
   try {
     const { id } = req.params;
     const { title, link } = req.body;
@@ -53,7 +53,7 @@ export const updateNotice = async (req, res) => {
 };
 
 // 📌 Get All Notices
-export const getNotices = async (req, res) => {
+ const getNotices = async (req, res) => {
   try {
     const notices = await Notice.find().sort({ createdAt: -1 }); // latest first
     return res.status(200).json({ notices });
@@ -64,7 +64,7 @@ export const getNotices = async (req, res) => {
 };
 
 // 📌 Delete Notice
-export const deleteNotice = async (req, res) => {
+ const deleteNotice = async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -79,3 +79,5 @@ export const deleteNotice = async (req, res) => {
     return res.status(500).json({ error: "Internal server error" });
   }
 };
+
+export { addNotice, updateNotice, getNotices, deleteNotice };
