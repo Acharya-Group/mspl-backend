@@ -11,6 +11,7 @@ import FaqRoutes from './Faq.routes.js';
 import NoticeRoutes from './Notice.routes.js';
 import ExamCalenderRoutes from './ExamCalender.routes.js';
 import GalleryRoutes from './Gallery.route.js';
+import EventRoutes from './Event.routes.js';
 const routes = express.Router();
 
 routes.use("/Admin",adminRoutes)
@@ -23,7 +24,7 @@ routes.use("/Testimonial",TestimonialRoute)
 routes.use("/blogs",BlogRoute)
 routes.use("/Faq",FaqRoutes)
 routes.use("/Notice",NoticeRoutes)
-routes.use("/Event",NoticeRoutes)
+routes.use("/Event",EventRoutes)
 routes.use("/ExamCalender",ExamCalenderRoutes)
 routes.use("/gallery",GalleryRoutes,)
 

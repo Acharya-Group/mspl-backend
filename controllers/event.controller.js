@@ -1,7 +1,7 @@
-import Event from "../models/Event.js";
+import EventModel from "../models/EventModel.js";
 
 // 📌 Add Event
- const addEvent = async (req, res) => {
+const addEvent = async (req, res) => {
   try {
     const { title } = req.body;
 
@@ -9,7 +9,7 @@ import Event from "../models/Event.js";
       return res.status(400).json({ error: "Title is required" });
     }
 
-    const event = new Event({ title });
+    const event = new EventModel({ title });
     const savedEvent = await event.save();
 
     return res.status(201).json({
@@ -23,17 +23,17 @@ import Event from "../models/Event.js";
 };
 
 // 📌 Update Event
- const updateEvent = async (req, res) => {
+const updateEvent = async (req, res) => {
   try {
     const { id } = req.params;
     const { title } = req.body;
 
-    const event = await Event.findById(id);
+    const event = await EventModel.findById(id);
     if (!event) {
       return res.status(404).json({ error: "Event not found" });
     }
 
-    if (title) event.title = title;
+    if (title?.trim()) event.title = title.trim();
 
     const updatedEvent = await event.save();
 
@@ -48,9 +48,9 @@ import Event from "../models/Event.js";
 };
 
 // 📌 Get All Events
- const getEvents = async (req, res) => {
+const getEvents = async (req, res) => {
   try {
-    const events = await Event.find().sort({ createdAt: -1 }); // latest first
+    const events = await EventModel.find().sort({ createdAt: -1 });
     return res.status(200).json({ events });
   } catch (error) {
     console.error("Error fetching events:", error);
@@ -59,11 +59,11 @@ import Event from "../models/Event.js";
 };
 
 // 📌 Delete Event
- const deleteEvent = async (req, res) => {
+const deleteEvent = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const deletedEvent = await Event.findByIdAndDelete(id);
+    const deletedEvent = await EventModel.findByIdAndDelete(id);
     if (!deletedEvent) {
       return res.status(404).json({ error: "Event not found" });
     }
