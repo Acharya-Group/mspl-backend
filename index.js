@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 4000;
 const allowedOrigins = [
   "http://localhost:3000",
   "https://msplyoga.com",
-  "https://mspl-two.vercel.app"
+  "https://mspl-beta.vercel.app"
 ];
 
 app.use(
